@@ -1,0 +1,21 @@
+<package format="2">
+  <name>decaying_cloud_aggregator</name>
+  <version>0.0.0</version>
+  <description>The decaying_cloud_aggregator package</description>
+
+  <maintainer email="simon.giegerich@stud.tu-darmstadt.de">Simon Giegerich</maintainer>
+
+  <author email="simon.giegerich@stud.tu-darmstadt.de">Simon Giegerich</author>
+
+  <license>MIT</license>
+
+  <url type="repository">https://github.com/tu-darmstadt-ros-pkg/hector_cloud_proc</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <depend>laser_geometry</depend>
+  <depend>roscpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>tf</depend>
+  <depend>pcl_ros</depend>
+</package>

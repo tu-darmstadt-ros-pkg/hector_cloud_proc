@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+
+<launch>
+  <rosparam command="load" file="$(find decaying_cloud_aggregator)/config/decaying_aggregator_config.yaml"
+            subst_value="true"/>
+
+  <node pkg="decaying_cloud_aggregator" type="decaying_cloud_aggregator_node" name="decaying_cloud_aggregator"
+        output="screen" respawn="true"/>
+</launch>
