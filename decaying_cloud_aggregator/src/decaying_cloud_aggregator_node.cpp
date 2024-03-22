@@ -150,6 +150,8 @@ public:
       return;
     }
 
+    out_cloud_stamp_ = ros::Time( 0 );
+
     for ( int i = 0; i < in_topics_.size(); ++i )
     {
       cloud_subs_.push_back(
@@ -194,6 +196,12 @@ private:
       pcl::transformPointCloud( pc_tmp, *pc, sensorToWorld );
 
       cloud_concatenator_.push( pc );
+
+      // only continue if the current cloud is the newest one
+      if ( out_cloud_stamp_ > cloud_in->header.stamp )
+        return;
+
+      out_cloud_stamp_ = cloud_in->header.stamp;
 
       pcl::PointCloud<pcl::PointXYZ>::Ptr tmp_concatenated_cloud = cloud_concatenator_.concatenate();
 
@@ -404,6 +412,9 @@ private:
 
   // The publisher for the output cloud
   ros::Publisher out_cloud_pub_;
+
+  // The timestamp of the last output cloud
+  ros::Time out_cloud_stamp_;
 
   // The transform listener
   boost::shared_ptr<tf::TransformListener> tfl_;
